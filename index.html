@@ -1,147 +1,281 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Afnan Scents - Luxury Perfumes</title>
-    <meta name="description" content="Luxury perfumes for men and women. Find your signature scent.">
-    <style>
-        body {
-            font-family: Arial;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Afnan Scents - Luxury Perfumes</title>
+  <meta name="description" content="Luxury perfumes for men and women. Find your signature scent." />
 
-        header {
-            background-color: #000;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+      color: #111;
+    }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 20px;
-        }
+    /* Promo bar */
+    .promo-bar {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 10px 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      font-size: 14px;
+    }
 
-        .product {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+    .promo-bar span {
+      font-weight: 400;
+      opacity: 0.9;
+      margin-left: 8px;
+    }
 
-        .product h3 {
-            margin: 0;
-        }
+    header {
+      background-color: #000;
+      color: white;
+      padding: 26px 18px;
+      text-align: center;
+    }
 
-        .price {
-            color: green;
-            font-weight: bold;
-        }
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: 0.8px;
+    }
 
-        button {
-            padding: 8px 12px;
-            background-color: black;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+    header p {
+      margin: 8px 0 0;
+      opacity: 0.9;
+    }
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #222;
-            color: white;
-        }
-    </style>
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .note-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 14px 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .container { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .container { grid-template-columns: 1fr; }
+    }
+
+    .product {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.10);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border: 1px solid #eee;
+    }
+
+    .product h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .summary {
+      font-size: 13px;
+      opacity: 0.85;
+      margin: 0;
+    }
+
+    .desc {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      gap: 10px;
+    }
+
+    .price {
+      color: #0a7a2f;
+      font-weight: bold;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    button {
+      padding: 9px 12px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      background: #222;
+      color: white;
+      margin-top: 20px;
+      font-size: 13px;
+      opacity: 0.95;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
+  <!-- TOP PROMO BANNER -->
+  <div class="promo-bar">
+    BUY 1, GET THE 2ND 25% OFF
+    <span>Limited-time offer • Mix & match any perfumes</span>
+  </div>
+
+  <header>
     <h1>Afnan Scents</h1>
     <p>Find Your Signature Scent</p>
-</header>
+  </header>
 
-<div class="container">
+  <div class="section">
+    <div class="note-box">
+      <strong>Store Focus:</strong> Luxury-inspired perfumes with strong performance and elegant scent profiles.
+      Each fragrance includes a quick summary to help customers choose faster.
+    </div>
 
-    <div class="product">
+    <div class="container">
+
+      <div class="product">
         <h3>Midnight Oud</h3>
-        <p>Rich oud and amber fragrance.</p>
-        <p class="price">$89</p>
-        <button>Add to Cart</button>
-    </div>
+        <p class="summary">Bold • Smoky • Long-lasting</p>
+        <p class="desc">A rich oud fragrance layered with amber and dark woods—best for nights and formal wear.</p>
+        <div class="price-row">
+          <p class="price">$89</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
 
-    <div class="product">
+      <div class="product">
         <h3>Rose Elixir</h3>
-        <p>Soft rose and vanilla blend.</p>
-        <p class="price">$75</p>
-        <button>Add to Cart</button>
-    </div>
+        <p class="summary">Soft • Romantic • Clean finish</p>
+        <p class="desc">Rose blended with vanilla and a gentle musk—ideal for everyday wear and special occasions.</p>
+        <div class="price-row">
+          <p class="price">$75</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
 
-    <div class="product">
+      <div class="product">
         <h3>Ocean Mist</h3>
-        <p>Fresh aquatic citrus scent.</p>
-        <p class="price">$65</p>
-        <button>Add to Cart</button>
-    </div>
+        <p class="summary">Fresh • Aquatic • Energizing</p>
+        <p class="desc">A crisp marine scent with citrus notes—perfect for daytime, school, work, and gym days.</p>
+        <div class="price-row">
+          <p class="price">$65</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
 
-    <div class="product">
+      <div class="product">
         <h3>Royal Amber</h3>
-        <p>Amber and sandalwood luxury scent.</p>
-        <p class="price">$92</p>
-        <button>Add to Cart</button>
-    </div>
+        <p class="summary">Warm • Elegant • Luxurious</p>
+        <p class="desc">Amber and saffron with a smooth sandalwood base—designed to feel premium and refined.</p>
+        <div class="price-row">
+          <p class="price">$92</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
 
-    <div class="product">
+      <div class="product">
         <h3>Vanilla Dream</h3>
-        <p>Sweet vanilla and caramel.</p>
-        <p class="price">$70</p>
-        <button>Add to Cart</button>
-    </div>
+        <p class="summary">Sweet • Cozy • Crowd-pleaser</p>
+        <p class="desc">Vanilla and caramel with a soft musk dry-down—comforting, warm, and easy to love.</p>
+        <div class="price-row">
+          <p class="price">$70</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
 
-    <div class="product">
+      <div class="product">
         <h3>Noir Intense</h3>
-        <p>Spicy leather fragrance.</p>
-        <p class="price">$88</p>
-        <button>Add to Cart</button>
-    </div>
+        <p class="summary">Dark • Spicy • Statement scent</p>
+        <p class="desc">A spicy blend with leather and patchouli—strong, confident, and best for evenings.</p>
+        <div class="price-row">
+          <p class="price">$88</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
 
-    <div class="product">
+      <div class="product">
         <h3>Citrus Spark</h3>
-        <p>Bright lemon and bergamot.</p>
-        <p class="price">$60</p>
-        <button>Add to Cart</button>
-    </div>
+        <p class="summary">Bright • Clean • Uplifting</p>
+        <p class="desc">Lemon and bergamot with light woods—fresh and simple for daily wear and warm weather.</p>
+        <div class="price-row">
+          <p class="price">$60</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
 
-    <div class="product">
+      <div class="product">
         <h3>Desert Musk</h3>
-        <p>White musk oriental scent.</p>
-        <p class="price">$78</p>
-        <button>Add to Cart</button>
-    </div>
+        <p class="summary">Smooth • Musky • Modern</p>
+        <p class="desc">White musk with subtle oriental warmth—clean but rich, great for all-day wear.</p>
+        <div class="price-row">
+          <p class="price">$78</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
 
-    <div class="product">
+      <div class="product">
         <h3>Lavender Bliss</h3>
-        <p>Relaxing lavender perfume.</p>
-        <p class="price">$68</p>
-        <button>Add to Cart</button>
-    </div>
+        <p class="summary">Calming • Fresh • Soft powder</p>
+        <p class="desc">Lavender with a gentle, airy finish—ideal for relaxed days or a clean “after shower” vibe.</p>
+        <div class="price-row">
+          <p class="price">$68</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
 
-    <div class="product">
+      <div class="product">
         <h3>Golden Spice</h3>
-        <p>Warm cinnamon and amber blend.</p>
-        <p class="price">$85</p>
-        <button>Add to Cart</button>
+        <p class="summary">Spiced • Warm • Winter-ready</p>
+        <p class="desc">Cinnamon and cardamom over amber—perfect for colder months and evening wear.</p>
+        <div class="price-row">
+          <p class="price">$85</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+
     </div>
+  </div>
 
-</div>
-
-<footer>
-    <p>© 2026 Afnan Scents | Online Perfume Store</p>
-</footer>
+  <footer>
+    © 2026 Afnan Scents | Online Perfume Store
+  </footer>
 
 </body>
 </html>
