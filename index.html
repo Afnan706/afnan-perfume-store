@@ -3,239 +3,871 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Afnan Scents - Luxury Perfumes</title>
-  <meta name="description" content="Luxury perfumes for men and women. Find your signature scent." />
+  <title>Afnan Scents — Affordable Luxury Perfumes</title>
+  <meta name="description" content="Affordable luxury perfumes. Find your signature scent with trendy, long-lasting fragrances." />
 
   <style>
-    body {
+    :root{
+      --bg: #0b0b0f;
+      --bg2:#0f1016;
+      --card:#151622;
+      --card2:#11121b;
+      --text:#f2f2f5;
+      --muted:#b8b9c4;
+      --line: rgba(255,255,255,.10);
+      --gold:#d6b25e;
+      --gold2:#f0d48a;
+      --accent:#9f7aea; /* trendy vibe accent */
+      --success:#2ecc71;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --shadow2: 0 12px 35px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
       font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
-      color: #111;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(214,178,94,.12), transparent 55%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(159,122,234,.12), transparent 55%),
+                  linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
     }
 
-    .promo-bar {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 10px 14px;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      font-size: 14px;
+    /* PROMO BAR */
+    .promo-bar{
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: linear-gradient(90deg, rgba(214,178,94,.20), rgba(159,122,234,.18));
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
     }
-
-    .promo-bar span {
-      font-weight: 400;
-      opacity: 0.9;
-      margin-left: 8px;
-    }
-
-    header {
-      background-color: #000;
-      color: #fff;
-      padding: 26px 18px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 34px;
-      letter-spacing: 0.8px;
-    }
-
-    header p {
-      margin: 8px 0 0;
-      opacity: 0.9;
-    }
-
-    .section {
-      max-width: 1100px;
+    .promo-inner{
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 18px;
-    }
-
-    .note-box {
-      background: #fff;
-      border-radius: 10px;
-      padding: 14px 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.08);
-      margin-top: 14px;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 16px;
-    }
-
-    @media (max-width: 900px) {
-      .container { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 600px) {
-      .container { grid-template-columns: 1fr; }
-    }
-
-    .product {
-      background: #fff;
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.10);
-      border: 1px solid #eee;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .product h3 {
-      margin: 0;
-      font-size: 18px;
-    }
-
-    .summary {
+      padding: 10px 16px;
+      display:flex;
+      align-items:center;
+      justify-content: center;
+      gap:10px;
       font-size: 13px;
-      opacity: 0.85;
-      margin: 0;
+      letter-spacing: .3px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border: 1px solid rgba(214,178,94,.35);
+      border-radius: 999px;
+      background: rgba(0,0,0,.25);
+      color: var(--gold2);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .promo-text{
+      color: var(--text);
+      opacity: .95;
+      font-weight: 600;
+    }
+    .promo-sub{
+      color: var(--muted);
+      font-weight: 400;
     }
 
-    .desc {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.5;
+    /* NAVBAR */
+    .nav{
+      position: sticky;
+      top: 44px; /* below promo bar */
+      z-index: 50;
+      background: rgba(10,10,14,.55);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
     }
-
-    .price-row {
-      display: flex;
+    .nav-inner{
+      max-width: 1180px;
+      margin:0 auto;
+      padding: 14px 16px;
+      display:flex;
+      align-items:center;
       justify-content: space-between;
-      align-items: center;
-      margin-top: 6px;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: .6px;
+    }
+    .logo{
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 30% 30%, rgba(240,212,138,.95), rgba(214,178,94,.35)),
+                  linear-gradient(135deg, rgba(159,122,234,.35), rgba(0,0,0,.1));
+      box-shadow: 0 12px 30px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav-links a{
+      color: var(--muted);
+      text-decoration:none;
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      transition: .18s ease;
+      border: 1px solid transparent;
+    }
+    .nav-links a:hover{
+      color: var(--text);
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+    }
+    .nav-actions{
+      display:flex;
+      align-items:center;
       gap: 10px;
     }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(214,178,94,.25);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
+      font-size: 13px;
+      text-decoration:none;
+      transition: .18s ease;
+      white-space: nowrap;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(214,178,94,.45);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+    .cart-dot{
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(159,122,234,.35);
+      border: 1px solid rgba(159,122,234,.55);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 11px;
+      color: var(--text);
+    }
 
-    .price {
-      color: #0a7a2f;
-      font-weight: bold;
+    /* LAYOUT */
+    .wrap{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 22px 16px 60px;
+    }
+
+    /* HERO */
+    .hero{
+      margin-top: 18px;
+      border-radius: 24px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(900px 350px at 25% 30%, rgba(214,178,94,.18), transparent 55%),
+        radial-gradient(700px 300px at 75% 20%, rgba(159,122,234,.18), transparent 55%),
+        linear-gradient(135deg, rgba(255,255,255,.04), rgba(0,0,0,.35));
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .hero-inner{
+      padding: 46px 24px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 22px;
+      align-items:center;
+    }
+    .hero h1{
+      margin: 0 0 10px;
+      font-size: 42px;
+      letter-spacing: .6px;
+      line-height: 1.08;
+    }
+    .hero p{
+      margin: 0 0 18px;
+      color: var(--muted);
       font-size: 15px;
-      margin: 0;
+      line-height: 1.6;
+      max-width: 58ch;
     }
-
-    button {
-      padding: 9px 12px;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      border-radius: 8px;
+    .hero-cta{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight: 700;
       font-size: 13px;
+      border: 1px solid rgba(255,255,255,.14);
+      transition: .18s ease;
+      white-space: nowrap;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(214,178,94,.95), rgba(214,178,94,.35));
+      color: #0b0b0f;
+      border-color: rgba(214,178,94,.55);
+    }
+    .btn.primary:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); }
+    .btn.ghost{
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+    }
+    .btn.ghost:hover{
+      transform: translateY(-1px);
+      border-color: rgba(159,122,234,.55);
+      box-shadow: var(--shadow2);
+    }
+    .hero-right{
+      display:grid;
+      gap: 12px;
+    }
+    .stat{
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 14px 14px;
+    }
+    .stat .k{
+      display:block;
+      font-weight: 900;
+      font-size: 18px;
+      color: var(--gold2);
+      letter-spacing: .2px;
+    }
+    .stat .t{
+      display:block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
     }
 
-    button:hover { opacity: 0.9; }
+    /* SECTION HEADERS */
+    .section-head{
+      margin: 34px 0 14px;
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: 20px;
+      letter-spacing: .4px;
+    }
+    .section-head p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 70ch;
+      line-height: 1.5;
+    }
 
-    footer {
-      text-align: center;
+    /* BENEFITS */
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .benefit{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
       padding: 16px;
-      background: #222;
-      color: #fff;
-      margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .benefit .icon{
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(159,122,234,.35), rgba(214,178,94,.22));
+      border: 1px solid rgba(255,255,255,.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .benefit h3{ margin: 0 0 6px; font-size: 15px; }
+    .benefit p{ margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+    /* BEST SELLERS */
+    .best{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .best-card{
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.35));
+      box-shadow: var(--shadow2);
+      transition: .18s ease;
+    }
+    .best-card:hover{ transform: translateY(-3px); }
+    .best-img{
+      aspect-ratio: 16/10;
+      width:100%;
+      object-fit: cover;
+      display:block;
+      filter: contrast(1.05) saturate(1.05);
+    }
+    .best-body{
+      padding: 14px;
+      display:grid;
+      gap: 8px;
+    }
+    .tag{
+      display:inline-flex;
+      width: fit-content;
+      gap:8px;
+      align-items:center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(214,178,94,.14);
+      border: 1px solid rgba(214,178,94,.28);
+      color: var(--gold2);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      text-transform: uppercase;
+    }
+    .best-title{
+      margin: 0;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+    .best-desc{
+      margin: 0;
+      color: var(--muted);
       font-size: 13px;
-      opacity: 0.95;
+      line-height: 1.5;
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .price{
+      color: var(--success);
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: .2px;
+    }
+
+    /* PRODUCTS */
+    .products{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .product{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 20px;
+      overflow:hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      transition: .18s ease;
+    }
+    .product:hover{ transform: translateY(-3px); border-color: rgba(214,178,94,.22); }
+    .pimg{
+      width:100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      display:block;
+      filter: contrast(1.05) saturate(1.07);
+    }
+    .pbody{
+      padding: 14px;
+      display:grid;
+      gap: 8px;
+    }
+    .pname{
+      margin:0;
+      font-weight: 900;
+      font-size: 15px;
+      letter-spacing: .2px;
+    }
+    .psum{
+      margin:0;
+      color: rgba(240,212,138,.95);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      text-transform: uppercase;
+    }
+    .pdesc{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      min-height: 40px;
+    }
+    .pactions{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 2px;
+    }
+    .add{
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-weight: 900;
+      font-size: 12px;
+      border: 1px solid rgba(214,178,94,.35);
+      background: rgba(0,0,0,.25);
+      color: var(--text);
+      cursor: pointer;
+      transition: .18s ease;
+    }
+    .add:hover{
+      transform: translateY(-1px);
+      border-color: rgba(214,178,94,.60);
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
+    }
+
+    /* REVIEWS */
+    .reviews{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .review{
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .stars{
+      color: var(--gold2);
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .review p{ margin:0; color: var(--muted); line-height: 1.6; font-size: 13px; }
+    .review .who{
+      margin-top: 12px;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    /* FOOTER */
+    footer{
+      margin-top: 40px;
+      border-top: 1px solid var(--line);
+      background: rgba(0,0,0,.25);
+    }
+    .foot-inner{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 22px 16px;
+      display:grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 16px;
+    }
+    .foot-title{
+      font-weight: 900;
+      letter-spacing: .4px;
+      margin: 0 0 8px;
+    }
+    .foot-text{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .foot-links a{
+      display:block;
+      color: var(--muted);
+      text-decoration:none;
+      padding: 6px 0;
+      font-size: 13px;
+      width: fit-content;
+    }
+    .foot-links a:hover{ color: var(--text); }
+    .copyright{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 12px 16px 20px;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .hero-inner{ grid-template-columns: 1fr; }
+      .products{ grid-template-columns: repeat(2, 1fr); }
+      .grid3, .best, .reviews{ grid-template-columns: 1fr; }
+      .foot-inner{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Promo banner -->
   <div class="promo-bar">
-    BUY 1, GET THE 2ND 25% OFF
-    <span>Limited-time offer • Mix & match any perfumes</span>
+    <div class="promo-inner">
+      <span class="badge">BOGO 25%</span>
+      <span class="promo-text">Buy 1, get the 2nd 25% off</span>
+      <span class="promo-sub">Mix & match any perfumes • Limited time</span>
+    </div>
   </div>
 
-  <header>
-    <h1>Afnan Scents</h1>
-    <p>Find Your Signature Scent</p>
-  </header>
+  <!-- Nav -->
+  <div class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true"></span>
+        AFNAN SCENTS
+      </a>
 
-  <div class="section">
-    <div class="note-box">
-      <strong>Store Focus:</strong> Luxury-inspired perfumes with strong performance and elegant scent profiles.
-      Each fragrance includes a helping summary to choose faster.
-    </div>
-
-    <div class="container">
-      <div class="product">
-        <h3>Midnight Oud</h3>
-        <p class="summary">Bold • Smoky • Long-lasting</p>
-        <p class="desc">Rich oud with amber and dark woods—best for nights and formal wear.</p>
-        <div class="price-row"><p class="price">$89</p><button>Add to Cart</button></div>
+      <div class="nav-links">
+        <a href="#shop">Shop</a>
+        <a href="#best">Best Sellers</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
       </div>
 
-      <div class="product">
-        <h3>Rose Elixir</h3>
-        <p class="summary">Soft • Romantic • Clean finish</p>
-        <p class="desc">Rose blended with vanilla and gentle musk—great for daily wear.</p>
-        <div class="price-row"><p class="price">$75</p><button>Add to Cart</button></div>
-      </div>
-
-      <div class="product">
-        <h3>Ocean Mist</h3>
-        <p class="summary">Fresh • Aquatic • Energizing</p>
-        <p class="desc">Crisp marine scent with citrus—ideal for school, work, and daytime.</p>
-        <div class="price-row"><p class="price">$65</p><button>Add to Cart</button></div>
-      </div>
-
-      <div class="product">
-        <h3>Royal Amber</h3>
-        <p class="summary">Warm • Elegant • Luxurious</p>
-        <p class="desc">Amber and saffron with sandalwood—premium and refined.</p>
-        <div class="price-row"><p class="price">$92</p><button>Add to Cart</button></div>
-      </div>
-
-      <div class="product">
-        <h3>Vanilla Dream</h3>
-        <p class="summary">Sweet • Cozy • Crowd-pleaser</p>
-        <p class="desc">Vanilla and caramel with soft musk—comforting and easy to love.</p>
-        <div class="price-row"><p class="price">$70</p><button>Add to Cart</button></div>
-      </div>
-
-      <div class="product">
-        <h3>Noir Intense</h3>
-        <p class="summary">Dark • Spicy • Statement scent</p>
-        <p class="desc">Spice with leather and patchouli—strong and confident for evenings.</p>
-        <div class="price-row"><p class="price">$88</p><button>Add to Cart</button></div>
-      </div>
-
-      <div class="product">
-        <h3>Citrus Spark</h3>
-        <p class="summary">Bright • Clean • Uplifting</p>
-        <p class="desc">Lemon and bergamot with light woods—fresh for warm weather.</p>
-        <div class="price-row"><p class="price">$60</p><button>Add to Cart</button></div>
-      </div>
-
-      <div class="product">
-        <h3>Desert Musk</h3>
-        <p class="summary">Smooth • Musky • Modern</p>
-        <p class="desc">White musk with subtle warmth—clean but rich all-day scent.</p>
-        <div class="price-row"><p class="price">$78</p><button>Add to Cart</button></div>
-      </div>
-
-      <div class="product">
-        <h3>Lavender Bliss</h3>
-        <p class="summary">Calming • Fresh • Soft powder</p>
-        <p class="desc">Lavender with airy finish—relaxed, clean “after shower” vibe.</p>
-        <div class="price-row"><p class="price">$68</p><button>Add to Cart</button></div>
-      </div>
-
-      <div class="product">
-        <h3>Golden Spice</h3>
-        <p class="summary">Spiced • Warm • Winter-ready</p>
-        <p class="desc">Cinnamon and cardamom over amber—perfect for cold months.</p>
-        <div class="price-row"><p class="price">$85</p><button>Add to Cart</button></div>
+      <div class="nav-actions">
+        <a class="pill" href="#shop">Shop Now</a>
+        <a class="pill" href="#shop" title="Demo cart">
+          Cart <span class="cart-dot">0</span>
+        </a>
       </div>
     </div>
   </div>
 
-  <footer>© 2026 Afnan Scents | Online Perfume Store</footer>
+  <div class="wrap" id="top">
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-inner">
+        <div>
+          <h1>Affordable luxury perfumes — built for your vibe.</h1>
+          <p>
+            Afnan Scents is a trendy, premium-looking fragrance store with prices made for students and young professionals.
+            Explore bold oud, fresh aquatic, sweet vanilla, and clean musk scents — all curated to help you find your signature.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#shop">Shop the Collection</a>
+            <a class="btn ghost" href="#best">See Best Sellers</a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="stat">
+            <span class="k">BOGO 25% Deal</span>
+            <span class="t">Add a second perfume and get 25% off the cheaper item.</span>
+          </div>
+          <div class="stat">
+            <span class="k">10+ Curated Scents</span>
+            <span class="t">Everyday fresh options + night-out statement fragrances.</span>
+          </div>
+          <div class="stat">
+            <span class="k">Trendy + Premium</span>
+            <span class="t">Luxury design, affordable pricing, easy shopping flow.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose us -->
+    <div class="section-head" id="about">
+      <div>
+        <h2>Why choose Afnan Scents</h2>
+        <p>Designed like a luxury brand, priced like an affordable trend store. Clean layout, curated scents, and a promo that encourages bundles.</p>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="benefit">
+        <div class="icon">⏳</div>
+        <h3>Long-lasting feel</h3>
+        <p>Each scent is positioned to feel premium and noticeable — especially for daily wear or nights out.</p>
+      </div>
+      <div class="benefit">
+        <div class="icon">✨</div>
+        <h3>Trendy scent profiles</h3>
+        <p>Fresh, sweet, musky, and spicy options that match modern fragrance trends and social media hype.</p>
+      </div>
+      <div class="benefit">
+        <div class="icon">💸</div>
+        <h3>Affordable pricing</h3>
+        <p>Mid-range prices keep it accessible while preserving quality perception and brand trust.</p>
+      </div>
+    </div>
+
+    <!-- Best Sellers -->
+    <div class="section-head" id="best">
+      <div>
+        <h2>Best Sellers</h2>
+        <p>Three top picks that cover different vibes — bold, fresh, and sweet.</p>
+      </div>
+    </div>
+
+    <div class="best">
+      <article class="best-card">
+        <img class="best-img" alt="Dark luxury perfume bottle (stock image)" src="https://source.unsplash.com/1200x800/?perfume,luxury,dark" />
+        <div class="best-body">
+          <span class="tag">Top Pick</span>
+          <h3 class="best-title">Midnight Oud</h3>
+          <p class="best-desc">Bold, smoky, and rich — a statement scent for evenings and formal wear.</p>
+          <div class="row">
+            <span class="price">$89</span>
+            <a class="btn ghost" href="#shop">Shop</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="best-card">
+        <img class="best-img" alt="Fresh blue perfume bottle (stock image)" src="https://source.unsplash.com/1200x800/?perfume,blue,fresh" />
+        <div class="best-body">
+          <span class="tag">Trending</span>
+          <h3 class="best-title">Ocean Mist</h3>
+          <p class="best-desc">Crisp, aquatic, and energizing — perfect for school, work, and daytime.</p>
+          <div class="row">
+            <span class="price">$65</span>
+            <a class="btn ghost" href="#shop">Shop</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="best-card">
+        <img class="best-img" alt="Vanilla themed perfume bottle (stock image)" src="https://source.unsplash.com/1200x800/?perfume,vanilla,sweet" />
+        <div class="best-body">
+          <span class="tag">Fan Favorite</span>
+          <h3 class="best-title">Vanilla Dream</h3>
+          <p class="best-desc">Sweet, cozy, and easy to love — a perfect everyday “compliment getter.”</p>
+          <div class="row">
+            <span class="price">$70</span>
+            <a class="btn ghost" href="#shop">Shop</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Products -->
+    <div class="section-head" id="shop">
+      <div>
+        <h2>Shop the Collection</h2>
+        <p>Each product includes a quick vibe summary, a short description, and a price. Mix & match to use the BOGO 25% offer.</p>
+      </div>
+    </div>
+
+    <section class="products" aria-label="Product grid">
+      <!-- 1 -->
+      <article class="product">
+        <img class="pimg" alt="Oud perfume bottle (stock image)" src="https://source.unsplash.com/900x900/?perfume,oud" />
+        <div class="pbody">
+          <h3 class="pname">Midnight Oud</h3>
+          <p class="psum">Bold • Smoky • Long-lasting</p>
+          <p class="pdesc">Rich oud with amber and dark woods — best for nights and formal wear.</p>
+          <div class="pactions"><span class="price">$89</span><button class="add">Add to Cart</button></div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="product">
+        <img class="pimg" alt="Rose perfume bottle (stock image)" src="https://source.unsplash.com/900x900/?perfume,rose" />
+        <div class="pbody">
+          <h3 class="pname">Rose Elixir</h3>
+          <p class="psum">Soft • Romantic • Clean finish</p>
+          <p class="pdesc">Rose blended with vanilla and gentle musk — great for daily wear.</p>
+          <div class="pactions"><span class="price">$75</span><button class="add">Add to Cart</button></div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="product">
+        <img class="pimg" alt="Fresh aquatic perfume bottle (stock image)" src="https://source.unsplash.com/900x900/?perfume,aquatic" />
+        <div class="pbody">
+          <h3 class="pname">Ocean Mist</h3>
+          <p class="psum">Fresh • Aquatic • Energizing</p>
+          <p class="pdesc">Crisp marine scent with citrus — ideal for daytime and warm weather.</p>
+          <div class="pactions"><span class="price">$65</span><button class="add">Add to Cart</button></div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="product">
+        <img class="pimg" alt="Amber perfume bottle (stock image)" src="https://source.unsplash.com/900x900/?perfume,amber" />
+        <div class="pbody">
+          <h3 class="pname">Royal Amber</h3>
+          <p class="psum">Warm • Elegant • Luxurious</p>
+          <p class="pdesc">Amber with saffron and sandalwood — smooth, rich, and refined.</p>
+          <div class="pactions"><span class="price">$92</span><button class="add">Add to Cart</button></div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="product">
+        <img class="pimg" alt="Vanilla perfume bottle (stock image)" src="https://source.unsplash.com/900x900/?perfume,vanilla" />
+        <div class="pbody">
+          <h3 class="pname">Vanilla Dream</h3>
+          <p class="psum">Sweet • Cozy • Trendy</p>
+          <p class="pdesc">Vanilla + caramel with soft musk — comforting and easy to love.</p>
+          <div class="pactions"><span class="price">$70</span><button class="add">Add to Cart</button></div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="product">
+        <img class="pimg" alt="Spicy perfume bottle (stock image)" src="https://source.unsplash.com/900x900/?perfume,spice" />
+        <div class="pbody">
+          <h3 class="pname">Noir Intense</h3>
+          <p class="psum">Dark • Spicy • Statement</p>
+          <p class="pdesc">Spice with leather and patchouli — confident and night-ready.</p>
+          <div class="pactions"><span class="price">$88</span><button class="add">Add to Cart</button></div>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="product">
+        <img class="pimg" alt="Citrus perfume bottle (stock image)" src="https://source.unsplash.com/900x900/?perfume,citrus" />
+        <div class="pbody">
+          <h3 class="pname">Citrus Spark</h3>
+          <p class="psum">Bright • Clean • Uplifting</p>
+          <p class="pdesc">Lemon + bergamot with light woods — fresh and daily-friendly.</p>
+          <div class="pactions"><span class="price">$60</span><button class="add">Add to Cart</button></div>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="product">
+        <img class="pimg" alt="Musk perfume bottle (stock image)" src="https://source.unsplash.com/900x900/?perfume,musk" />
+        <div class="pbody">
+          <h3 class="pname">Desert Musk</h3>
+          <p class="psum">Smooth • Musky • Modern</p>
+          <p class="pdesc">Clean white musk with subtle warmth — perfect all-day scent.</p>
+          <div class="pactions"><span class="price">$78</span><button class="add">Add to Cart</button></div>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="product">
+        <img class="pimg" alt="Lavender perfume bottle (stock image)" src="https://source.unsplash.com/900x900/?perfume,lavender" />
+        <div class="pbody">
+          <h3 class="pname">Lavender Bliss</h3>
+          <p class="psum">Calming • Fresh • Soft</p>
+          <p class="pdesc">Lavender with an airy finish — relaxed “after shower” vibe.</p>
+          <div class="pactions"><span class="price">$68</span><button class="add">Add to Cart</button></div>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="product">
+        <img class="pimg" alt="Spiced amber perfume bottle (stock image)" src="https://source.unsplash.com/900x900/?perfume,cardamom" />
+        <div class="pbody">
+          <h3 class="pname">Golden Spice</h3>
+          <p class="psum">Warm • Spiced • Winter-ready</p>
+          <p class="pdesc">Cinnamon + cardamom over amber — perfect for colder months.</p>
+          <div class="pactions"><span class="price">$85</span><button class="add">Add to Cart</button></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Reviews -->
+    <div class="section-head" id="reviews">
+      <div>
+        <h2>Customer Reviews</h2>
+        <p>Social proof helps people buy online with confidence — these sample reviews make the store feel real and trustworthy.</p>
+      </div>
+    </div>
+
+    <section class="reviews" aria-label="Reviews">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Ocean Mist is super clean and fresh. Perfect for class and it lasts longer than I expected.”</p>
+        <div class="who">— Daniel R.</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Vanilla Dream gets compliments constantly. The site is easy to shop and the BOGO deal is nice.”</p>
+        <div class="who">— Sarah M.</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Midnight Oud feels expensive. Great for evenings. The branding looks premium but prices are fair.”</p>
+        <div class="who">— Ahmed K.</div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="foot-inner">
+      <div>
+        <h3 class="foot-title">AFNAN SCENTS</h3>
+        <p class="foot-text">
+          Affordable luxury perfumes with a modern vibe. Curated scents, clean layout, and a limited-time BOGO 25% offer.
+        </p>
+      </div>
+
+      <div class="foot-links">
+        <h3 class="foot-title">Quick Links</h3>
+        <a href="#shop">Shop</a>
+        <a href="#best">Best Sellers</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+
+      <div class="foot-links">
+        <h3 class="foot-title">Contact</h3>
+        <a href="#top">Email: afnanscents@example.com</a>
+        <a href="#top">Instagram: @afnanscents</a>
+        <a href="#top">Shipping: 2–5 business days</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      © 2026 Afnan Scents | Online Perfume Store (Project Site)
+    </div>
+  </footer>
+
 </body>
 </html>
